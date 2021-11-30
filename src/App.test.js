@@ -43,13 +43,13 @@ test("Check the first title has been rendered correctly in the document", async 
   await waitFor(() => expect(screen.getByText(/Films from Studio Ghibli API/i)).toBeInTheDocument());
 });
 
-// test('handles server error', async () => {
-//   server.use(
-//     rest.get('https://ghibliapi.herokuapp.com/films/', (req, res, ctx) => {
-//       return res(ctx.status(500))
-//     }),
-//   )
-//   render(<App url='https://ghibliapi.herokuapp.com/films/' />)
-//   await waitFor(() => screen.getByRole('alert'))
-//   expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
-// })
+
+test('handles server error status code 500', async () => {
+  server.use(
+    rest.get('https://ghibliapi.herokuapp.com/films/', (req, res, ctx) => {
+      return res(ctx.status(500))
+    }),
+  )
+  render(<App url='https://ghibliapi.herokuapp.com/films/' />)
+  await waitFor(() => expect(screen.getByText(/Oops… something went wrong, try again/i)).toBeInTheDocument());
+})

@@ -4,21 +4,38 @@ import axios from "axios";
 import FilmContainer from "./components/FilmContainer";
 
 function App() {
+
+
   // add styling later
+  
   // Add a read me - how to run your app
+
+
+
 
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
-  
+  const [errorMessage, setErroMessage] = useState(null);
+
+
   const getFilms = async () => {
-    const apiResponse = await axios.get(
-      `https://ghibliapi.herokuapp.com/films/`
-    );
-    setFilms(apiResponse.data);
+    try {
+      const apiResponse = await axios.get(
+        `https://ghibliapi.herokuapp.com/films/`
+      );
+      setFilms(apiResponse.data);
+      setErroMessage(null);
+    } catch (error) {
+      if (error.response.status === 500) {
+        setErroMessage(`Oops… something went wrong, try again`);
+      } else {
+        setErroMessage(error.message);
+      }
+    }
   };
 
   useEffect(() => {
-  if (films.length === 0) {
+    if (films.length === 0) {
       getFilms();
     }
     setFirstFilm(films[0]);
@@ -30,6 +47,7 @@ function App() {
         <p>Films from Studio Ghibli API</p>
       </header>
       <FilmContainer firstFilm={firstFilm} />
+      <p>{errorMessage}</p>
     </div>
   );
 }
