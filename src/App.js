@@ -4,9 +4,6 @@ import axios from "axios";
 import FilmContainer from "./components/FilmContainer";
 
 function App() {
-  // add styling later
-
-  // Add a read me - how to run your app
 
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
