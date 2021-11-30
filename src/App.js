@@ -26,10 +26,16 @@ function App() {
       setFilms(apiResponse.data);
       setErroMessage(null);
     } catch (error) {
-      if (error.response.status === 500) {
+      switch (error.response.status) {
+        case 500:
         setErroMessage(`Oops… something went wrong, try again`);
-      } else {
+        break;
+        case 418:
+        setErroMessage(`I'm a tea pot 🫖, silly`);
+        break;
+        default:
         setErroMessage(error.message);
+        break;
       }
     }
   };
