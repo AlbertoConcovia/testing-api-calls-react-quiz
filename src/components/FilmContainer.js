@@ -1,5 +1,5 @@
 
-function FimlContainer({firstFilm}) {
+function FilmContainer({firstFilm}) {
   return (
     <div>
       <h2>{firstFilm?.title}</h2>
@@ -12,4 +12,4 @@ function FimlContainer({firstFilm}) {
   );
 }
 
-export default FimlContainer;
+export default FilmContainer;

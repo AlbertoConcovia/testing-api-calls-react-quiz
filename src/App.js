@@ -1,17 +1,11 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FimlContainer from "./components/FimlContainer";
+import FilmContainer from "./components/FilmContainer";
 
 function App() {
   // add styling later
-  // consider waiting for your data to load (Hint: async and await)
-  // Add a read me explaining how to run your app when it’s done!
-
-  // App - welcome to create another component if you like!
-  // Once your App is calling the Studio Ghibli API and displaying the first film title on your page ('Castle in the Sky'),
-  // add a test to mock (or “stub”) the API response.
-  // check the first film title has been rendered correctly (Hint: 'Castle in the Sky' should be in the document).
+  // Add a read me - how to run your app
 
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
@@ -35,18 +29,7 @@ function App() {
       <header>
         <p>Films from Studio Ghibli API</p>
       </header>
-
-      <FimlContainer firstFilm={firstFilm} />
-      {/* {firstFilm && (<FimlContainer firstFilm={firstFilm} />)} */}
-
-      {/* <div>
-        <h2>{firstFilm?.title}</h2>
-        <img
-          className="character-item__img"
-          src={firstFilm?.image}
-          alt={firstFilm?.title}
-        />
-      </div> */}
+      <FilmContainer firstFilm={firstFilm} />
     </div>
   );
 }
