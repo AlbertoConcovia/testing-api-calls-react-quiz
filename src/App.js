@@ -23,7 +23,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (films.length === 0 ) {
+    if (films.length === 0) {
       getFilms();
     }
     setFirstFilm(films[0]);
@@ -31,23 +31,17 @@ function App() {
 
   return (
     <div>
-
       <header>
         <p>Films from Studio Ghibli API</p>
       </header>
 
       <div>
-          <h2>{firstFilm?.title}</h2>
-{/* 
-          "title": "Castle in the Sky",
-          "image": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg", 
-// */}
-{/*      <img
-             className="character-item__img"
-             src={imageSrc}
-             alt={character.name}
-           /> */}
-
+        <h2>{firstFilm?.title}</h2>
+        <img
+          className="character-item__img"
+          src={firstFilm?.image}
+          alt={firstFilm?.title}
+        />
       </div>
     </div>
   );
