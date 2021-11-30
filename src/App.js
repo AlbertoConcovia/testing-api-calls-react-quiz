@@ -4,7 +4,6 @@ import axios from "axios";
 import FilmContainer from "./components/FilmContainer";
 
 function App() {
-
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
   const [errorMessage, setErroMessage] = useState(null);
@@ -40,7 +39,7 @@ function App() {
 
   return (
     <div>
-      <header>
+      <header className="header">
         <p>Films from Studio Ghibli API</p>
       </header>
       <FilmContainer firstFilm={firstFilm} />
