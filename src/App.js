@@ -4,19 +4,13 @@ import axios from "axios";
 import FilmContainer from "./components/FilmContainer";
 
 function App() {
-
-
   // add styling later
-  
+
   // Add a read me - how to run your app
-
-
-
 
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
   const [errorMessage, setErroMessage] = useState(null);
-
 
   const getFilms = async () => {
     try {
@@ -28,14 +22,14 @@ function App() {
     } catch (error) {
       switch (error.response.status) {
         case 500:
-        setErroMessage(`Oops… something went wrong, try again`);
-        break;
+          setErroMessage(`Oops… something went wrong, try again`);
+          break;
         case 418:
-        setErroMessage(`I'm a tea pot 🫖, silly`);
-        break;
+          setErroMessage(`I'm a tea pot 🫖, silly`);
+          break;
         default:
-        setErroMessage(error.message);
-        break;
+          setErroMessage(error.message);
+          break;
       }
     }
   };
