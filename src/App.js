@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import FimlContainer from "./components/FimlContainer";
 
 function App() {
   // add styling later
@@ -14,7 +15,7 @@ function App() {
 
   const [films, setFilms] = useState([]);
   const [firstFilm, setFirstFilm] = useState({});
-  //display the title of the first film  ('Castle in the Sky').
+  
   const getFilms = async () => {
     const apiResponse = await axios.get(
       `https://ghibliapi.herokuapp.com/films/`
@@ -23,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (films.length === 0) {
+  if (films.length === 0) {
       getFilms();
     }
     setFirstFilm(films[0]);
@@ -35,14 +36,17 @@ function App() {
         <p>Films from Studio Ghibli API</p>
       </header>
 
-      <div>
+      <FimlContainer firstFilm={firstFilm} />
+      {/* {firstFilm && (<FimlContainer firstFilm={firstFilm} />)} */}
+
+      {/* <div>
         <h2>{firstFilm?.title}</h2>
         <img
           className="character-item__img"
           src={firstFilm?.image}
           alt={firstFilm?.title}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
